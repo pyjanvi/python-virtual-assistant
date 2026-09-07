@@ -2,6 +2,9 @@
 
 A Python-based virtual assistant with a modern web interface, voice input, and voice responses.
 
+## Live Demo
+[Try the Virtual AI Assistant](https://python-virtual-assistant-1.onrender.com)
+
 ## Features
 
 - 💬 Text-based chat
