@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 
 def get_response(message: str) -> str:
@@ -31,7 +32,7 @@ def get_response(message: str) -> str:
 
     # Current time
     elif "time" in message:
-        current_time = datetime.datetime.now().strftime("%I:%M %p")
+        current_time = datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%I:%M %p")
         return f"The current time is {current_time}."
 
     # Goodbye
