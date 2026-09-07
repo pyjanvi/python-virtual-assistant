@@ -31,6 +31,7 @@ async function sendMessage() {
         }
 
         const data = await response.json();
+        speakResponse(data.response);
 
         // Show assistant response
         chatBox.innerHTML += `
@@ -72,37 +73,50 @@ function startListening() {
     recognition.lang = "en-IN";
     recognition.interimResults = false;
     recognition.continuous = false;
+    recognition.maxAlternatives = 1;
 
     recognition.onstart = function () {
-        console.log("Listening...");
+        console.log("🎤 Listening...");
     };
 
     recognition.onresult = function (event) {
 
-        const transcript = event.results[0][0].transcript;
+        const transcript =
+            event.results[0][0].transcript;
 
         console.log("You said:", transcript);
 
         input.value = transcript;
 
-        // Automatically send the recognized message
+        // Send after speech is recognized
         sendMessage();
     };
 
     recognition.onerror = function (event) {
-        console.error("Speech recognition error:", event.error);
+
+        console.error(
+            "Speech recognition error:",
+            event.error
+        );
+
+        if (event.error === "no-speech") {
+            alert("No speech detected. Please speak after clicking the microphone.");
+        }
+
+        if (event.error === "not-allowed") {
+            alert("Microphone permission is blocked. Please allow microphone access.");
+        }
     };
 
     recognition.onend = function () {
-        console.log("Stopped listening.");
+        console.log("🎤 Stopped listening.");
     };
 
     recognition.start();
 }
 
-
 // Press Enter to send
-document.getElementById("message").addEventListener("keydown", function(event) {
+document.getElementById("message").addEventListener("keydown", function (event) {
 
     if (event.key === "Enter") {
         event.preventDefault();
@@ -110,3 +124,21 @@ document.getElementById("message").addEventListener("keydown", function(event) {
     }
 
 });
+// 🔊 Voice Output
+function speakResponse(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "en-IN";
+    speech.rate = 1;
+    speech.pitch = 1;
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(speech);
+}
+// Quick action buttons
+function quickMessage(message) {
+    const input = document.getElementById("message");
+
+    input.value = message;
+    sendMessage();
+}

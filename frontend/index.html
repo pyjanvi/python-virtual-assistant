@@ -4,28 +4,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Virtual Assistant</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="app">
-        <h1>🤖 Virtual Assistant</h1>
+    <main class="assistant-app">
 
-        <div id="chat-box">
-            <div class="bot-message">
-                Hello! How can I help you?
+        <!-- Left Panel -->
+        <aside class="side-panel">
+
+            <div class="brand">
+                <div class="brand-icon">🤖</div>
+
+                <div>
+                    <h2>Virtual AI</h2>
+                    <span>Personal Assistant</span>
+                </div>
             </div>
-        </div>
 
-        <div class="input-area">
-            <input type="text" id="message" placeholder="Type your message...">
+            <div class="assistant-info">
 
-            <button onclick="startListening()">🎤</button>
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </div>
+                <div class="large-icon">
+                    🤖
+                </div>
+
+                <h1>Your Smart Assistant</h1>
+
+                <p>
+                    Ask questions, use voice commands,
+                    and interact with your personal assistant.
+                </p>
+
+                <div class="online-status">
+                    <span></span>
+                    Assistant Online
+                </div>
+
+            </div>
+
+            <div class="features">
+
+                <div class="feature">
+                    <span>💬</span>
+                    <div>
+                        <strong>Smart Chat</strong>
+                        <small>Natural conversations</small>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <span>🎤</span>
+                    <div>
+                        <strong>Voice Input</strong>
+                        <small>Speak naturally</small>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <span>🔊</span>
+                    <div>
+                        <strong>Voice Response</strong>
+                        <small>Hear the assistant</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Chat Panel -->
+        <section class="chat-panel">
+
+            <header class="chat-header">
+
+                <div>
+                    <h2>Conversation</h2>
+                    <p>Talk with your virtual assistant</p>
+                </div>
+
+                <div class="header-status">
+                    <span></span>
+                    Online
+                </div>
+
+            </header>
+
+
+            <!-- Chat -->
+            <div id="chat-box">
+
+                <div class="bot-message">
+                    <strong>Assistant</strong>
+
+                    <p>
+                        Hello! I'm your virtual assistant.
+                        How can I help you today?
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Quick Suggestions -->
+            <div class="quick-actions">
+
+                <button onclick="quickMessage('What is your name?')">
+                    👋 Introduce yourself
+                </button>
+
+                <button onclick="quickMessage('What is the time?')">
+                    🕐 Current time
+                </button>
+
+                <button onclick="quickMessage('How are you?')">
+                    💬 How are you?
+                </button>
+
+            </div>
+
+
+            <!-- Input -->
+            <div class="input-container">
+
+                <div class="input-wrapper">
+
+                    <input
+                        type="text"
+                        id="message"
+                        placeholder="Message your assistant..."
+                        autocomplete="off"
+                    >
+
+                    <button
+                        class="mic-button"
+                        onclick="startListening()"
+                        title="Voice input"
+                    >
+                        🎤
+                    </button>
+
+                </div>
+
+                <button
+                    class="send-button"
+                    onclick="sendMessage()"
+                >
+                    Send
+                    <span>➤</span>
+                </button>
+
+            </div>
+
+
+            <footer>
+                Built with Python • FastAPI • JavaScript
+            </footer>
+
+        </section>
+
+    </main>
+
+
     <script src="script.js"></script>
 
 </body>
