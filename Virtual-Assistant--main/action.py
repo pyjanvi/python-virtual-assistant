@@ -5,8 +5,6 @@ import weather
 import os
 
 
-
-
 def Action(send) :   
   
     data_btn  = send.lower()
